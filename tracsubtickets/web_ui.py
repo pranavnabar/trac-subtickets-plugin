@@ -170,13 +170,14 @@ class SubTicketsModule(Component):
                         # 2nd column
                         type = tag.td(ticket['type'])
                         # 3rd column
+												milestone = tag.td(ticket['milestone'])
                         status = tag.td(ticket['status'])
                         # 4th column
                         href = req.href.query(status='!closed',
                                               owner=ticket['owner'])
                         owner = tag.td(tag.a(ticket['owner'], href=href))
 
-                        tbody.append(tag.tr(summary, type, status, owner))
+                        tbody.append(tag.tr(summary, type, milestone, status, owner))
                         _func(children[id], depth + 1)
 
                 _func(data['subtickets'])
